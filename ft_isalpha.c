@@ -6,20 +6,11 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:00:17 by rmarin-j          #+#    #+#             */
-/*   Updated: 2023/11/27 20:48:19 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:27:31 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-int ft_isalpha (int c)
+int	ft_isalpha(int c)
 {
-    if (c >= 'A' && c <= 'Z')
-        return (1);
-    if (c >= 'a' && c <= 'z')
-        return (1);
-    return (0);
-}
-int main (void)
-{
-    printf("%d", ft_isalpha('v'));
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }

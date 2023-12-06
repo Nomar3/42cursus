@@ -6,22 +6,17 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 20:46:22 by rmarin-j          #+#    #+#             */
-/*   Updated: 2023/11/28 16:35:01 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:07:28 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalpha (int c)
+int	ft_isalnum(int c)
 {
-    if (c >= 'A' && c <= 'Z')
-        return (1);
-    if (c >= 'a' && c <= 'z')
-        return (1);
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
-}
-#include <stdio.h>
-int main (void)
-{
-    printf("%d", ft_isalpha('v'));
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

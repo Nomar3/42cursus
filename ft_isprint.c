@@ -6,18 +6,11 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 21:07:52 by rmarin-j          #+#    #+#             */
-/*   Updated: 2023/11/27 21:08:14 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:28:12 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-int ft_isprint (int c)
+int	ft_isprint(int c)
 {
-    if (c >= 32 && c <= 126)
-        return (1);
-    return (0);
-}
-int main (void)
-{
-    printf("%d", ft_isprint('v'));
+	return (c >= 32 && c <= 126);
 }

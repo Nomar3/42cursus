@@ -6,18 +6,13 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 21:02:36 by rmarin-j          #+#    #+#             */
-/*   Updated: 2023/11/27 21:06:48 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:19:03 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-int ft_isascii (int c)
+int	ft_isascii(int c)
 {
-    if (c >= 0 && c <= 127)
-        return (1);
-    return (0);
-}
-int main (void)
-{
-    printf("%d", ft_isascii('v'));
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

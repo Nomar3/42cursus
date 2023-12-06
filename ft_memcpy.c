@@ -1,16 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 20:41:15 by rmarin-j          #+#    #+#             */
-/*   Updated: 2023/11/30 13:26:12 by rmarin-j         ###   ########.fr       */
+/*   Created: 2023/11/29 13:50:03 by rmarin-j          #+#    #+#             */
+/*   Updated: 2023/11/29 15:14:13 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include <stddef.h>
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	return (c >= '0' && c <= '9');
+	size_t	i;
+	char	*cdst;
+	char	*csrc;
+
+	i = 0;
+	if (dst != NULL || src != NULL)
+	{
+		cdst = (char *)dst;
+		csrc = (char *)src;
+		while (n > 0)
+		{
+			cdst[i] = csrc[i];
+			i++;
+			n--;
+		}
+	}
+	return (dst);
 }

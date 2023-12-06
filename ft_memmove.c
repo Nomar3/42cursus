@@ -1,16 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 20:41:15 by rmarin-j          #+#    #+#             */
-/*   Updated: 2023/11/30 13:26:12 by rmarin-j         ###   ########.fr       */
+/*   Created: 2023/11/29 20:50:22 by rmarin-j          #+#    #+#             */
+/*   Updated: 2023/11/30 13:24:55 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft.h"
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	return (c >= '0' && c <= '9');
+	char	*cdst;
+	char	*csrc;
+
+	cdst = (char *)dst;
+	csrc = (char *)src;
+	if (!cdst && !csrc && len)
+		return (dst);
+	if (cdst < csrc)
+	{
+		while (len--)
+			*cdst++ = *csrc++;
+	}
+	else
+	{
+		cdst += len -1;
+		csrc += len -1;
+		while (len--)
+			*cdst-- = *csrc--;
+	}
+	return (dst);
 }

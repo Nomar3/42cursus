@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 20:41:15 by rmarin-j          #+#    #+#             */
-/*   Updated: 2023/11/30 13:26:12 by rmarin-j         ###   ########.fr       */
+/*   Created: 2023/11/29 19:01:26 by rmarin-j          #+#    #+#             */
+/*   Updated: 2023/11/29 20:21:46 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	return (c >= '0' && c <= '9');
+	size_t	i;
+
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && n != 0)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+		n--;
+	}
+	return (0);
 }
