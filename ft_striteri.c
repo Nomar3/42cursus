@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/03 20:24:41 by rmarin-j          #+#    #+#             */
-/*   Updated: 2023/12/07 19:25:13 by rmarin-j         ###   ########.fr       */
+/*   Created: 2023/12/08 12:28:06 by rmarin-j          #+#    #+#             */
+/*   Updated: 2023/12/08 19:44:28 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	i;
-	char	*ptr;
-	size_t	len;
+	unsigned int	i;
 
 	i = 0;
-	len = ft_strlen(s1) - 1;
-	if (!s1[0])
-		return (ft_strdup(""));
-	while (i <= len && ft_strchr(set, s1[i]))
-		i++;
-	if (i > len)
-		return (ft_strdup(s1 + len + 1));
-	while (ft_strchr(set, s1[len]) && len >= 0)
-		len--;
-	ptr = malloc(sizeof(char) * (len - i + 2));
-	if (!ptr)
-		return (NULL);
-	s1 += i;
-	ft_strlcpy (ptr, s1, len - i + 2);
-	return (ptr);
+	while (*s)
+		f(i++, s++);
 }

@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:27:13 by rmarin-j          #+#    #+#             */
-/*   Updated: 2023/12/05 17:02:01 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:54:19 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,34 @@ int	cont_word(char const *s, char c)
 
 	i = 0;
 	j = 0;
+	if (!s[i])
+		return (0);
 	while (s[i])
 	{
-		if (s[i + 1] == c && s[i] != c)
+		if ((s[i + 1] == '\0' || s[i + 1] == c) && s[i] != c)
 			j++;
 		i++;
 	}
-	if (s[i -1] != c)
-		j++;
 	return (j);
+}
+
+int	ft_free(const char *sub_s, char **ptr, char c, int *k)
+{
+	int	j;
+
+	j = 0;
+	while (sub_s[j] != c && sub_s[j])
+		j++;
+	ptr[*k] = ft_substr(sub_s, 0, j);
+	if (!ptr[*k])
+	{
+		while (*k >= 0)
+			free(ptr[(*k)--]);
+		free(ptr);
+		return (-1);
+	}
+	(*k)++;
+	return (*k);
 }
 
 char	**ft_split(char const *s, char c)
@@ -37,24 +56,23 @@ char	**ft_split(char const *s, char c)
 	int		k;
 	char	**ptr;
 
-	i = 0;
+	i = -1;
 	k = 0;
 	ptr = malloc (sizeof(char *) * (cont_word(s, c) + 1));
 	if (!ptr)
 		return (NULL);
-	while (s[i])
+	while (s[++i])
 	{
 		j = 0;
 		if (s[i] != c)
 		{
-			while (s[i + j] != c)
+			while (s[i + j] != c && s[i + j])
 				j++;
-			ptr[k] = ft_substr(s, i, j);
-			k++;
-			i += j;
+			k = ft_free(&s[i], ptr, c, &k);
+			if (k == -1)
+				return (NULL);
+			i += j -1;
 		}
-		else
-			i++;
 	}
 	ptr[k] = 0;
 	return (ptr);

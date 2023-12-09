@@ -6,7 +6,7 @@
 /*   By: rmarin-j <rmarin-j@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 13:54:04 by rmarin-j          #+#    #+#             */
-/*   Updated: 2023/12/06 19:31:01 by rmarin-j         ###   ########.fr       */
+/*   Updated: 2023/12/09 12:39:33 by rmarin-j         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	cont_dig(int n)
 {
 	int	i;
-	int	aux;
 
 	i = 0;
 	if (n == 0)
@@ -25,35 +24,47 @@ int	cont_dig(int n)
 		n = -n;
 		i++;
 	}
-	aux = n;
-	while (aux > 0)
+	while (n > 0)
 	{
-		aux = aux / 10;
+		n /= 10;
 		i++;
 	}
 	return (i);
 }
 
+char	*aux_ft(int dig, int n, char *s)
+{
+	while (dig >= 0)
+	{
+		s[dig] = ((n % 10) + '0');
+		n /= 10;
+		if ((dig == 1) && (s[0] == '-'))
+			dig--;
+		dig--;
+	}
+	return (s);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*s;
-	int		i;
 	int		dig;
 
-	i = 1;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	dig = cont_dig(n);
-	s = malloc(sizeof(char) * dig);
+	s = malloc(sizeof(char) * (dig + 1));
+	if (!s)
+		return (NULL);
+	s[dig] = '\0';
 	if (n < 0)
 	{
 		s[0] = '-';
 		n *= -1;
 	}
-	if (n > 9)
-		ft_itoa (n / 10);
-	while (dig > 1)
-	{
-		s[i] = (n % 10) + '0';
-		dig --;
-	}
+	else
+		s[0] = '0';
+	dig--;
+	aux_ft(dig, n, s);
 	return (s);
 }
